@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>AJAX dengan AXIOS</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>Tutorial AJAX dengan AXIOS</h1>
+    <button id="btn-laod" onclick="loadContent()">Load Content</button>
+    <div id="result"></div>
+
+    <script>
+        function loadContent() {
+            document.getElementById("btn-load").innerHTML = "Loading..";
+            document.getElementById("btn-load").setAttribute("disabled", "true");
+            axios.get('https://jsonplaceholder.typicode.com/posts/')
+                .then(function(respone) {
+                    var template = respone.data.
+                    map(post =>{
+                        return `
+                    <h3>${post.title}</h3>
+                    <p>${post.body}</p>
+                    <hr>`
+                    }).join("");
+
+                    document.getElementById("result").innerHTML = template;
+                })
+                .catch(function(error){
+                    console.log(error);
+                })
+                .then(function (){
+                    document.getElementById("btn-load").removeAttribute("disabled");
+                });
+        }
+    </script>
+</body>
+</html>

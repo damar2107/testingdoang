@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Belajar ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Load Data</h1>
+    <img id="avatar" src="" width="100" height="100">
+    <br>
+    <h3 id="name"></h3>
+    <p id="location"></p>
+
+    <script>
+        var url = "https://api.github.com/users/s4nj4y";
+        $.get(url, function(data, status){
+            $("#avatar").attr("src", data.avatar_url);
+            $("#name").text(data.location);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>AJAX2</title>
+    </head>
+        <body>
+            <h2>Tutor AJAX <button id="btn-clear" onclick="clearResult()">Bersihkan</button></h2>
+            <div id="hasil"></div>
+            <button id="button" onclick="loadcontent()">Muat konten</button>
+        
+            <script>
+                function loadcontent(){
+                var xhr = new XMLHttpRequest();
+                var url = "https://api.github.com/user/s4nj4y";
+
+                xhr.onloadstart = function () {
+                    document.getElementById("button").
+                    innerHTML = "Loading...";
+                }
+                xhr.onerror = function () {
+                    alert("Gagal mengambil data");
+                };
+                xhr.onload = function () {
+                    if (this.responseText !== ""){
+                        var data = JSON.parse(this.responseText);
+                        var img = document.createElement("img");
+                        img.src = data.avatar_url;
+                        var name = document.createElement("h3");
+                        name.innerHTML = data.name;
+
+                        document.getElementById("hasil").append(img, name);
+                        document.getElementById("button").innerHTML = "Done";
+
+                        setTimeout(function () {
+                            document.getElementById("button").
+                            innerHTML = "Load lagi";
+                        }, 3000);
+                    }
+                };
+                xhr.open("GET", url, true);
+                xhr.send();
+
+                }
+
+                function clearResult() {
+                    document.getElementById("hasil").innerHTML = "";
+                }
+            
+            </script>
+        </body>
+</html>

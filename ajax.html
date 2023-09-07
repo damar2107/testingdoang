@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>AJAX</title>
+</head>
+<body>
+   <script>
+
+    // Membuat Object Ajax
+    var xhr = new XMLHttpRequest();
+
+    //Menentukan Fungsi Handler Untuk Event 
+    xhr.onreadystatechange = function() {...};
+    xhr.onload = function() {...};
+    xhr.onerror = function() {...};
+    xhr.onprogress = function() {...};
+
+    //Menentukan Method dan URL
+    xhr.open("GET", url, true);
+
+    // Mengirim Request
+    xhr.send();
+
+   </script>
+</body>
+</html>

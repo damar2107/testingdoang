@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>AJAX</title>
+</head>
+<body>
+    <h2>Tutor AJAX dengan Fetch</h2>
+    <button onclick="loadcontent()">Muat konten</button>
+    <div id="hasil"></div>
+
+    <script>
+        function loadcontent(){
+            var url = "https://jsonplaceholder.typicode.com/posts/";
+            fetch(url).then(respone => respone.json())
+            .then(function(data){
+                var template = data.map(post => {
+                    return `
+                    <h3>${post.title}</h3>
+                    <p>${post.body}</p>`;
+                });
+                document.getElementById("hasil").
+                innerHTML = template.join('<br>');
+            }).catch(function(e)
+            alert("gagal mengambil data");
+            )
+            };
+        
+    </script>
+</body>
+</html>

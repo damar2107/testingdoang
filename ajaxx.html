@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>AJAX</title>
+</head>
+<body>
+    <h2>Tutor AJAX</h2>
+    <div id="hasil"></div>
+    <button onclick="loadcontent()">Muat konten</button>
+
+    <script>
+        function loadcontent(){
+            var xhr = new XMLHttpRequest();
+            var url = "https://api.github.com/user/s4nj4y";
+            xhr.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("hasil").
+                    innerHTML = this.responseText;
+                }
+            };
+            xhr.open("GET", url, true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
